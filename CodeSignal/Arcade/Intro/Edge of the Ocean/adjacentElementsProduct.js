@@ -23,7 +23,7 @@ function adjacentElementsProduct(inputArray) {
     
     for (let i = 0; i < inputArray.length - 1; i++) {
         largestProduct === undefined ? largestProduct = inputArray[i] * inputArray[i + 1] : largestProduct = Math.max(largestProduct, inputArray[i] * inputArray[i + 1]);
-        // really long line, hard to read and comprehend
+        // really long line, hard to read and comprehend, very bleh
     }
     
     return largestProduct;
@@ -41,7 +41,7 @@ function adjacentElementsProduct(inputArray) {
 }
 
 // ES6 and improvement
-    // checked the solutions tab to find this
+    // shoutout to myjinxin2015 for this sweet one-liner
     // spread operator to separate the elements of the final array, allows for usage of Math.max()
     // slice from 1 because the array of products will always be one less in length than the original array
     // map over the copied array and multiply each element "x" with the previous element in the original array

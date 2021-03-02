@@ -19,9 +19,12 @@ function centuryFromYear(year) {
     return Math.floor(century) + 1;
 }
 
-// ES6
-const centuryFromYear = (year) => {
-    let century = year/100;
-
-    return century % 1 === 0 ? century : Math.floor(century) + 1;
+// Improvement
+    // don't need to check whether "century" in the previous method is a whole number
+    // if you Math.ceil() and it is a whole number, there will be no change
+function centuryFromYear(year) {
+    return Math.ceil(year / 100);
 }
+
+// ES6 one-liner
+const centuryFromYear = (year) => Math.ceil(year / 100);
