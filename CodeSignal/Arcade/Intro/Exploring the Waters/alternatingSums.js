@@ -60,3 +60,21 @@ function alternatingSums(a) {
     return res
 }
 
+//codeedog ES6 one-liner
+    // using array.reduce and an initial value of [0, 0]
+    // I had to turn to stackOverflow to figure out what's going on here, great resource
+    // BITWISE OPERATOR
+        // by using {i & 1}, codeedog is turning every index into a 0 or a 1, based on odd or even, 
+            // allowing us to sort by team1 or team2!
+            // this is a different way of writing what bitnay1 wrote above with the modulo operand
+    // the p that shows up after the comma in the callback function shows that there is a second statement
+        // shorthand for saying "return p"
+alternatingSums = a => a.reduce((p, v, i) => (p[i & 1] += v, p), [0, 0])
+
+//codeedog ES6 longhand
+const alternatingSums = (a) => {
+    a.reduce((p, v, i) => {
+        p[i & 1] += v;
+        return p;
+    }, [0, 0])
+}
