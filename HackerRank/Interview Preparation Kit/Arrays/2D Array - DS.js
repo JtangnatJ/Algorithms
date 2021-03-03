@@ -10,9 +10,9 @@ function hourglassSum(arr) {
         // arr[i][j] is one cell within the matrix
     for (let i = 0; i < arr.length - 2; i++) {
         for (let j = 0; j < arr[i].length - 2; j++) {
-            // fidn the sum of our current hourglass
+            // find the sum of our current hourglass
             let tempSum = 0;
-            // you know the dimensions of each hourglass so you can determine their numbers from your current cell
+            // you know the dimensions of each hourglass so you can determine their cell positions from your current cell
             let top = arr[i][j] + arr[i][j + 1] + arr[i][j + 2];
             let mid = arr[i + 1][j + 1];
             let bot = arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
