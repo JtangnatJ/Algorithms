@@ -49,3 +49,14 @@ function alternatingSums(a) {
 }
 
 // bintay1 simplification
+function alternatingSums(a) {
+    // rather than two tracker variables we start with the answer format
+        // meaning we will have to figure out where each weight goes and add to the current total
+    var res = [0, 0]
+    for(var i in a){
+        // by using {i % 2}, the answer will always be 0 or 1!
+        res[i % 2] += a[i]
+    }
+    return res
+}
+
