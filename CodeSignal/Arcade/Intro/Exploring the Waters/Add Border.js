@@ -41,6 +41,7 @@ function addBorder(picture) {
 const addBorder = (picture) => [border = '*'.repeat(picture[0].length + 2), ...picture.map(elem => `*${elem}*`), border];
 
 // codeedog w/ the regex
+addBorder = p => [(t = p[0].replace(/./g, '*')+'**'), ...p.map(v => `*${v}*`), t]
     // the second part of the solution is the same
     // instead of simply repeating the asterisk a certain number of times
         // we use regex instead
@@ -50,4 +51,3 @@ const addBorder = (picture) => [border = '*'.repeat(picture[0].length + 2), ...p
             // remember the 'g' outside of the forward slashes applies the pattern globally
                 // otherwise the regex pattern would find only the first character to replace and stop there
             // {/./} means any character that is not a linebreak
-addBorder = p => [(t = p[0].replace(/./g, '*')+'**'), ...p.map(v => `*${v}*`), t]
