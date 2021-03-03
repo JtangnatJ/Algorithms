@@ -62,6 +62,8 @@ function alternatingSums(a) {
 
 //codeedog ES6 one-liner
     // using array.reduce and an initial value of [0, 0]
+        // we are starting with [0, 0] and will be adding to it through our reduce function
+            // similar to how bintay1 did it, just a different process
     // I had to turn to stackOverflow to figure out what's going on here, great resource
     // BITWISE OPERATOR
         // by using {i & 1}, codeedog is turning every index into a 0 or a 1, based on odd or even, 
