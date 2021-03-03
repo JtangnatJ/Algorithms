@@ -48,13 +48,13 @@ function matrixElementsSum(matrix) {
 
 // myJinXin2015's Improvement
 function matrixElementsSum(matrix) {
-    // it will still be matrix[i][j]
-    // putting j on the first, outside loop will mean we are iterating vertically before horizontally
+    // we will still be reading rooms as matrix[i][j]
+    // putting j on the first, outside for loop will mean we are iterating vertically before horizontally
     // initializing r as the total
-    for (var r = 0, j = 0; j < matrix[0].length;j ++) {
+    for (var r = 0, j = 0; j < matrix[0].length; j++) {
         // once again, j on the outside and i on the inside means iterating vertically before horizontally
         // we will still be going from left to right, top to bottom due to starting at indices 0 and incrementing
-        for (var i=0; i < matrix.length; i++) {
+        for (var i = 0; i < matrix.length; i++) {
             // the moment we see a 0 room we can break
                 // any future rooms for this inside loop will be below a haunted room and are no longer viable
             if (matrix[i][j] === 0) {
