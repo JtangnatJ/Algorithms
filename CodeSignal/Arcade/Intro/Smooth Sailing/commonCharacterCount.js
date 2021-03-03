@@ -32,5 +32,12 @@ function commonCharacterCount(s1, s2) {
     }
     // using replace again, we remove all elements from s2 that are not "!"
         // returning the length will give us the number of "!", which is also the number of shared characters
+        // for those that are still newer, the funky symbols "/[^!]/g" are something called Regular Expressions, or regex for short
+            // this essentially gives us a pattern that we are looking for in our string
+            // the two forward slashes denote that we will be using a regex pattern
+            // "[^!]" tells us that we are looking for characters that are not "!"
+            // the "g" outside of the forward slashes indicate that the pattern should be applied globally
+                // the pattern will be applied to the entire string
+                // if there wasn't a "g", the pattern would simply find the first occurence that satisfies the condition of the pattern
     return s2.replace(/[^!]/g, "").length;
 }
