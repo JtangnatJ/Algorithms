@@ -11,11 +11,12 @@ function rotateImage(a) {
     const y = n - 1;
     for (let i = 0; i < x; i++) {
         for (let j = i; j < y - i; j++) {
+            // you can use math to determine the pattern of rotations
             k = a[i][j];
             a[i][j] = a[y - j][i];
             a[y - j][i] = a[y - i][y - j];
-            a[y - i][y - j] = a[j][y - i]
-            a[j][y - i] = k
+            a[y - i][y - j] = a[j][y - i];
+            a[j][y - i] = k;
         }
     }
     
@@ -24,3 +25,4 @@ function rotateImage(a) {
 
 // daniel_m147's ES6 one-liner
 rotateImage = a => a.map((row, rowIndex) => a.map(val => val[rowIndex]).reverse())
+// https://medium.com/front-end-weekly/matrix-rotation-%EF%B8%8F-6550397f16ab
