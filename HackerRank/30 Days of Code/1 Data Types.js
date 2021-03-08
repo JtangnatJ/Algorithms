@@ -22,7 +22,8 @@
 
 
 // it is important that you use readLine() when initializing your variables and converting to the proper variable type
-    // no explained anywhere considering this is supposed to be a beginners section
+    // not explained anywhere considering this is supposed to be a beginners section
+        // probably due to this being geared towards a different language
     // not to mention how confusing the HackerRank platform is in terms of input
 
 // you ahve to use toFixed(1) in the sum of the double variables to maintain double status
