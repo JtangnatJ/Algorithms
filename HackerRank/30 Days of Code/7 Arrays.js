@@ -19,4 +19,12 @@ function main() {
     console.log(result);
 }
 
+// Improvement
+function main() {
+    const n = parseInt(readLine(), 10);
 
+    const arr = readLine().split(' ').map(arrTemp => parseInt(arrTemp, 10));
+    // we can turn it into a one-liner by using built in array functions
+        // reverse the array then use a join to add a space between all elements and then log the result
+    console.log(arr.reverse().join(' '));
+}
