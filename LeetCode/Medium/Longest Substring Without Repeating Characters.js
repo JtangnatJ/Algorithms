@@ -17,7 +17,45 @@
     // Input: s = ""
     // Output: 0
 
-// Best Solution
+
+// Brute Force Solution
+    // the simplest method would be to check every substring and identify whether all the characters in the substrings were unique
+var lengthOfLongestSubstring = function(s) {
+    // helper function to check unique-ness within substring
+    var uniqueCheck = function(start, end) {
+        let charMap = {};
+
+        for (let i = start; i <= end; i++){
+            if (charMap[s[i]] === 1) {
+                return false;
+            } else {
+                charMap[s[i]] = 1;
+            }
+        }
+
+        return true;
+    }
+    // tracker variable for longest substring length
+    let longestSubstrLength = 0;
+    // nested iteration loop to find all substrings within the given string
+    for (let i = 0; i < s.length; i++) {
+        for (let j = i; j < s.length; j++) {
+            // if the substring has no repeating characters then compare to current longest tracked length and update if necessary
+            if (uniqueCheck(i, j)) {
+                longestSubstrLength = Math.max(longestSubstrLength, j - i + 1);
+            }
+        }
+    }
+
+    return longestSubstrLength;
+};
+// this solution is not the greatest and will take an insanely long time with longer strings
+    // Worst case scenario is O(n^3)
+        // because we iterate the s three times? nested loop and then once again for uniqueCheck?
+// Space complexity is O(Math.min(m, n)) because the only additional space we take up is our charMap which can potentially be as big as the entire string
+    // but it can also only be m size which is the number of unique characters i nthe string
+
+// Optimized Solution
 var lengthOfLongestSubstring = function(s) {
     // initialize two trackers: i and j to operate our sliding window, this window will be our unique substring at any given time
         // longestSubstrLength to track our longest substring length
@@ -48,6 +86,6 @@ var lengthOfLongestSubstring = function(s) {
     return longestSubstrLength;
 };
 // This is O(n) time complexity due to us only having to iterate over the string once
-    // O(Math.min(m, n)) space complexity because our charMap will be dependent on the number of unique characters in the string
+    // Still O(Math.min(m, n)) space complexity because our charMap will be dependent on the number of unique characters in the string
         // worst case scenario, the entire string contains only unique characters and our charMap will require one entry per character
     
