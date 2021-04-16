@@ -32,12 +32,22 @@ var lengthOfLongestSubstring = function(s) {
                 // charMap[s[j]] stores the index that occurs AFTER the character we are looking at.
                     // this allows us to move i to the character that comes AFTER the duplication
                         // for example: in 'abcda' the first char 'a' has the index of 0
-                            // but we store it into 
+                            // but we store it into our charMap tracked to the value of 1
+                                // this way, when we encounter 'a' again, we can tell our left tracker, i, to move to index 1 and eliminate the duplicate
+                // if i is larger than charMap[s[j]], then the duplicate letter is currently not within our window and can be ignored
             i = Math.max(charMap[s[j]], i);
         }
+        // compare our current substring length to our tracker variable and update if necessary
         longestSubstrLength = Math.max(longestSubstrLength, j - i + 1);
+        // update our charMap on the index of the current letter, but plus 1
+            // remember this is so any letter that we come across as duplicate, the left tracker variable i will move to the NEXT letter to eliminate deuplicates in the substring
         charMap[s[j]] = j + 1;
+        // move j to the next index before repeating our loop
         j++;
     }
     return longestSubstrLength;
 };
+// This is O(n) time complexity due to us only having to iterate over the string once
+    // O(Math.min(m, n)) space complexity because our charMap will be dependent on the number of unique characters in the string
+        // worst case scenario, the entire string contains only unique characters and our charMap will require one entry per character
+    
