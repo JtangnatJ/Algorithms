@@ -62,3 +62,5 @@ const sortedArrayMerger = (arr1, arr2) => {
 }
 // O(n + m) time complexity due to having to iterate over both arrays
     // O(n + m) space since we have to make a new array based on both of the provided arrays
+
+// TODO: logarithmic time
