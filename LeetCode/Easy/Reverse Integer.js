@@ -51,7 +51,7 @@ var reverse = function(x) {
     return (reversedNum > MAX || reversedNum < MIN) ? 0 : reversedNum;
 };
 
-//Numerical Solution
+//Mathematical Solution
 var reverse = function(x) {
     const MAX = Math.pow(2, 31) - 1;
     const MIN = -1 * Math.pow(2, 31);
@@ -75,6 +75,21 @@ var reverse = function(x) {
 
     return result;
 };
+// cleaner mathematical approach
+var reverse = function(x) {
+    const MAX = Math.pow(2, 31) - 1;
+    const MIN = -1 * Math.pow(2, 31);
+    
+    let result = 0;
+
+    while(x !== 0) {
+        result = (result * 10) + (x % 10);
+        x = Math.trunc(x / 10);
+    }
+
+    return (result > MAX || result < MIN) ? 0 : result;
+};
+
 
 //The numerical approach will give slower results on LeetCode, but you save space by not having to make an array. 
     // String method for smaller numbers and math method for larger numbers
