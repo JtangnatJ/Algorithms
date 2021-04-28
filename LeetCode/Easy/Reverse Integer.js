@@ -17,11 +17,12 @@
 
 // String approach
 var reverse = function(x) {
+    // problem states that our reversed number has to stay within bounds, so we will use these variables to compare 
     const MAX = Math.pow(2, 31) - 1;
     const MIN = -1 * Math.pow(2, 31);
     
-    const reversedStrArr = Math.abs(x).toString().split('');
-    let reversedNum = Number(reversedStrArr.reverse().join(''));
+    const reversedStr = Math.abs(x).toString().split('').reverse().join('');
+    let reversedNum = Number(reversedStr);
 
     if (x < 0) {
         reversedNum *= -1;
@@ -32,4 +33,17 @@ var reverse = function(x) {
     }
 
     return reversedNum;
+};
+
+//String Approach small improvements
+var reverse = function(x) {
+    // problem states that our reversed number has to stay within bounds, so we will use these variables to compare 
+    const MAX = Math.pow(2, 31) - 1;
+    const MIN = -1 * Math.pow(2, 31);
+    
+    const reversedStr = Math.abs(x).toString().split('').reverse().join('');
+    // isntead of using an if check to apply the negative, we use Math.sign and multiply it into our Number to get the proper sign and can use const instead of let, removing ambiguity
+    const reversedNum = Math.sign(x) * Number(reversedStr);
+    // by using a ternary operator, we save some lines of code
+    return (reversedNum > MAX || reversedNum < MIN) ? 0 : reversedNum;
 };
