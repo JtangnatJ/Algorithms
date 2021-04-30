@@ -50,3 +50,42 @@ const myAtoi = (s) => {
         
     return result;
 };
+
+// Minor Improvement for eye - relief
+const myAtoi = (s) => {
+    const MAX = Math.pow(2, 31) - 1;
+    const MIN = -1 * Math.pow(2, 31);
+
+    s = s.trim();
+    let sign = 1;
+    let result = 0;
+        
+    if (s[0] === "-") {
+        sign = -1;
+    }
+    if (s[0] === "+" || s[0] === "-") {
+        s = s.slice(1);
+    }
+
+    for (let el of s) { 
+        // by putting a '+' in front of the element, it will be converted into a number
+            // then do a shallow comparison with the string element to see if it is valid: 1 != '1' is false
+        if(+el != el || el === ' ') {
+            break;
+        } else {  
+            result = result * 10 + Number(el);
+        }
+    }
+    
+    result = result * sign;
+    
+    if (result < MIN) {
+        result = MIN;
+    }
+
+    if(result > MAX) {
+        result = MAX;
+    }
+        
+    return result;
+};
