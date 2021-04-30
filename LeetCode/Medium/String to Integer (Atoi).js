@@ -89,3 +89,26 @@ const myAtoi = (s) => {
         
     return result;
 };
+
+//Simple Code Fast Solution
+const myAtoi = (s) => {
+    if(!s) {
+        return 0;
+    }
+    
+    let num = parseInt(s); //parseInt will take care of any leading white spaces
+    // parseInt will also stop if it detects any NaN and will give us what we have
+    
+    if(isNaN(num)) {
+        return 0;
+    }
+    
+    if(num > (Math.pow(2, 31) - 1)) {
+        return Math.pow(2, 31) - 1;
+    }
+    if(num < (-Math.pow(2, 31))) {
+        return -Math.pow(2, 31);
+    }
+    
+    return num;
+};
