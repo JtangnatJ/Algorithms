@@ -63,4 +63,45 @@ const sortedArrayMerger = (arr1, arr2) => {
 // O(n + m) time complexity due to having to iterate over both arrays
     // O(n + m) space since we have to make a new array based on both of the provided arrays
 
+// save some time by stopping the merge/sort once we reach the halfway mark
+var findMedianSortedArrays = function(nums1, nums2) {
+    // total length of both arrays
+    const totalLen = nums1.length + nums2.length;
+    // indexes for both arrays, the current element, the previous element, in case of uneven total array length;
+    let idx1 = 0, idx2 = 0, curr, prev;
+
+    // while we havent reached the mid point of the combined arrays
+    while (idx1 + idx2 <= totalLen / 2) {
+        // updating our previous tracker
+        if (curr !== undefined) {
+            prev = curr;
+        }
+        // simplifies future coding
+        let elem1 = nums1[idx1];
+        let elem2 = nums2[idx2];
+        // if there are no more elements in array1
+        if (elem1 === undefined) {
+            curr = elem2;
+            idx2++;
+            continue;
+        }
+        // if there are no more elements in array2
+        if (elem2 === undefined) {
+            curr = elem1;
+            idx1++;
+            continue;
+        }
+        // update according to how the elements would be sorted
+        if (elem1 < elem2) {
+            curr = elem1;
+            idx1++;
+        } else {
+            curr = elem2;
+            idx2++;
+        }
+    }
+    // return based off of the total length, median would either be current or the average of two elements
+    return totalLen % 2 === 0 ? (prev + curr) / 2 : curr;
+};
+
 // TODO: logarithmic time
