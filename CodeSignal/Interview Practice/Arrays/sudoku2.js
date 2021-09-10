@@ -1,5 +1,12 @@
+// Sudoku is a number-placement puzzle. The objective is to fill a 9 × 9 grid with numbers in such a way that each column, each row,
+    // and each of the nine 3 × 3 sub-grids that compose the grid all contain all of the numbers from 1 to 9 one time.
+
+// Implement an algorithm that will check whether the given grid of numbers represents a valid Sudoku puzzle according to the layout rules described above.
+    // Note that the puzzle represented by grid does not have to be solvable.
+
 function sudoku2(grid) {
     //row check
+        // check all rows for repeat numbers
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[i].length; j++) {
             if (grid[i][j] !== '.') {
@@ -12,6 +19,8 @@ function sudoku2(grid) {
     }
     
     //col check
+        // insert one column at a time into the array colCheck
+        // check all columns for repeat numbers
     let colCheck = [];
     
     for (let x = 0; x < grid[0].length; x++) {
@@ -32,6 +41,8 @@ function sudoku2(grid) {
     }
     
     //3x3 check
+        // insert all 3x3 squares into the gradCheck array one at a time
+        // check each grid for repeat numbers
     let gridCheck = [];
     
     for (let k = 0; k < grid.length; k += 3) {
@@ -55,5 +66,6 @@ function sudoku2(grid) {
         }
     }
     
+    // return true if all checks pass
     return true;
 }
