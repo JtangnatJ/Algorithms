@@ -34,3 +34,23 @@ var search = function(nums, target) {
 
     return -1;
 };
+
+// Improvements
+var search = function(nums, target) {
+    let left = 0, right = nums.length - 1;
+
+    while(left < right) {
+        // this method of finding the midpoint protects us from overflow when the array indexes are too big
+        let midPoint = left + Math.floor((right - left) / 2);
+
+        if (target === nums[midPoint]) {
+            return midPoint;
+        } else if (target > nums[midPoint]) {
+            left = midPoint + 1;
+        } else {
+            right = midPoint - 1;
+        }
+    }
+    // turned the final check into a ternary to reduce text
+    return nums[left] === target ? left : -1;
+};
