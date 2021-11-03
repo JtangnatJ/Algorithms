@@ -7,8 +7,8 @@
         // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given an integer, convert it to a roman numeral.
 
-// This is essentially our key, the numbers in the values array coincide with the elements of the romanNum array according to index.
-    // the "key" is rranged from large to small on purpose
+// This is essentially our key, the numbers in the values array correspond with the elements of the romanNum array according to index.
+    // the "key" is arranged from large to small on purpose
     // this is easier to iterate than an object key.
 const romanNum = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];
 const value = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
