@@ -15,12 +15,13 @@ var search = function(nums, target) {
         if (target === nums[midPoint]) {
             return midPoint;
         // otherwise, find which side of the midpoint the target falls under
-            // if target is on the larger  than the midpoint element, then bring the left tracker to the midpoint, cutting the array we have to search in half
+            // if target is on the larger  than the midpoint element, then bring the left tracker to the right of the midpoint,
+                // essentially getting rid of half the array we know will definitely not contain the target element
         } else if (target > nums[midPoint]) {
             left = midPoint + 1;
-            // do the same but to the right tracker if the target is smaller than the midpoint element 
+            // do the same but to the right tracker if the target is smaller than the midpoint element
         } else {
-            right = midPoint -1;
+            right = midPoint - 1;
         }
     }
     // we are constantly lowering the area in which we are looking for our target by half until we find our target
