@@ -48,7 +48,7 @@ var search = function(nums, target) {
         } else if (target > nums[midPoint]) {
             left = midPoint + 1;
         } else {
-            right = midPoint - 1;
+            right = midPoint;
         }
     }
     // turned the final check into a ternary to reduce text
