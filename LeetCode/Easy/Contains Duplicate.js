@@ -42,3 +42,6 @@ var containsDuplicate = function(nums) {
     // we compare the sizes of the set and our nums. if the set is smaller, then there were duplicates within nums
     return numberSet.size < nums.length;
 };
+
+// one-liner with ES6 and big arrow notation
+const containsDuplicate = (nums) => new Set(nums).size < nums.length;
