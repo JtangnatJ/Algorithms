@@ -34,3 +34,11 @@ var containsDuplicate = function(nums) {
     return false;
 };
 // O(n) time complexity: we iterate the array only once, obtaining a faster runtime by using extra space to track our elements
+
+// cleanest code
+var containsDuplicate = function(nums) {
+    // we use a set to create a data structure that only contains unique entries of elements within nums
+    const numberSet = new Set(nums);
+    // we compare the sizes of the set and our nums. if the set is smaller, then there were duplicates within nums
+    return numberSet.size < nums.length;
+};
