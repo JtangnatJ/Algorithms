@@ -15,3 +15,22 @@ var containsDuplicate = function(nums) {
     return false;
 };
 // O(n^2n): the built in array functions actually iterate the array so we have a nested loop
+
+// slightly optimized by using extra space 
+var containsDuplicate = function(nums) {
+    // use a map or an object to track elements in the array
+    const numberMap = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        // iterate through the array and check if our map contains the current element
+        if(numberMap.has(nums[i])) {
+            // if it does, then we have seen the element before, making it a duplicate; allowing us to return true;
+            return true;
+        }
+        // if we have not seen the element previously, we move on and create an entry for it in our map with an arbitrary value
+        numberMap.set(nums[i], 1);
+    }
+    // making it out the loop means we have only unique elements within the array, leading to us returning false;
+    return false;
+};
+// O(n) time complexity: we iterate the array only once, obtaining a faster runtime by using extra space to track our elements
