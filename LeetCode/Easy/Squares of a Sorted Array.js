@@ -6,3 +6,6 @@ var sortedSquares = function(nums) {
     // then sort the array with it's new elements and return
     return squaredNums.sort((a, b) => a - b);
 };
+
+// ES6 one liner
+const sortedSquares = (nums) => nums.map(num => num * num).sort((a, b) => a - b);
