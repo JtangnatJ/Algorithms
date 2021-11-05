@@ -26,3 +26,29 @@ var rotate = function(nums, k) {
     return nums;
 };
 // O(n + k): we iterate the length of the original array, then we have a loop that iterates through the length of k
+
+// the reverse method
+    // we reverse the entire array, then we reverse two subarrays
+var rotate = function(nums, k) {
+    //accounting for cases where k is larger than nums.length
+    k = k % nums.length;
+    // helper function that can reverse the entire nums array, or a section of the nums array
+    const reverse = (start, end) => {
+        while(start < end) {
+            let temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    // reverse the entire array: [1, 2, 3, 4, 5] => [5, 4, 3, 2, 1]
+    reverse(0, nums.length - 1);
+    // reverse the section that was "rotated": [5, 4, 3, 2, 1] => [3, 4, 5, 2, 1] assuming k = 3
+    reverse(0, k - 1);
+    // reverse the rest of the array to return the original order: [3, 4, 5, 2, 1] => [3, 4, 5, 1, 2]
+    reverse(k, nums.length - 1);
+   
+    return nums;
+};
+// this allows us to "rotate" the array in place without using extra space by splicing or extra entries in the array
