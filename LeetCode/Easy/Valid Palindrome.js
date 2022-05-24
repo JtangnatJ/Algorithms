@@ -13,3 +13,16 @@ var isPalindrome = function(s) {
     // return the comparison
     return strippedString === reversedString;
 };
+
+// two pointer solution
+var isPalindrome = function(s) {
+    const strippedString = s.toLowerCase().replace(/\W|_/g, '');
+
+    for (let i = 0, j = s.length -1; i <= j; i++, j--) {
+        if (strippedString.charAt(i) !== strippedString.charAt(j)) {
+            return false;
+        }
+    }
+
+    return true;
+};
