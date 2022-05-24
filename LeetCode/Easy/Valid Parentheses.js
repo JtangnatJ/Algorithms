@@ -70,3 +70,33 @@ var isValid = function(s) {
     // combines the empty stack check with the final return statement
     return stack.length === 0;
 };
+
+
+// slight improvements
+var isValid = function(s) {
+    // a simple length check early on
+        // if the string length is odd then we automatically fail
+    if(s.length % 2 !== 0) {
+        return false
+    }
+
+    const key = {
+        '(' : ')',
+        '{' : '}',
+        '[' : ']',
+    };
+
+    let stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        // simplify the if check
+        if (key[s[i]]) {
+            stack.push(s[i]);
+        // the only options are open or close parentheses so no need to nest the checks
+        } else if (s[i] !== stack.pop()) {
+            return false;
+        }
+    }
+    
+    return stack.length === 0;
+};
