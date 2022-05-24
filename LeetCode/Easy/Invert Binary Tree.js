@@ -22,12 +22,34 @@ var invertTree = function(root) {
 
     while(stack.length) {
         // by using pop, we are looking at one of the deeper branches. the root is at the beginning of the stack
-        let temp = stack.pop()
+        let temp = stack.pop();
 
         if (temp !== null) {
             // remember to switch lefts and rights
             [temp.left, temp.right] = [temp.right, temp.left];
+            // add the children into the queue
             stack.push(temp.left, temp.right)
+        }
+    }
+
+    return root;
+};
+
+// breadth first
+var invertTree = function(root) {
+    // in BFS we use a queue rather than a stack
+        // we want to take care of each layer at a time before diving any deeper
+    const queue = [root];
+
+    while (queue.length) {
+        // we take from the front of the queue because we want to do each level at a time
+        let temp = queue.shift();
+
+        if (temp !== null) {
+            // remember to switch left and right
+            [temp.left, temp.right] = [temp.right, temp.left];
+            // add the children into the queue
+            queue.push(temp.left, temp.right)
         }
     }
 
