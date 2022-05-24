@@ -29,3 +29,8 @@ var isAnagram = function(s, t) {
     return true;
 }; 
 
+// one-liner
+    // slower and bigger due to running sorts and splits
+var isAnagram = function(s, t) {
+    return s.split('').sort().join('') === t.split('').sort().join('');
+};
