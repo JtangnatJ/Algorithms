@@ -29,6 +29,13 @@ var isAnagram = function(s, t) {
     return true;
 }; 
 
+// a more readable way of doing the final if check on line 22 would be to decrement if the letter exists, other wise return false
+    // if (lettersMap[c]) {
+    //     lettersMap[c]--
+    // } else {
+    //     return false;
+    // }
+
 // one-liner
     // slower and bigger due to running sorts and splits
 var isAnagram = function(s, t) {
