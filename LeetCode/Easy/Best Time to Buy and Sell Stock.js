@@ -8,11 +8,31 @@ var maxProfit = function(prices) {
     let minPrice = prices[0];
     let maxProfit = 0;
     
+    // start with 1 because we would never buy and sell the stock on the same day
+        // compare the first index to itself
     for (let i = 1; i < prices.length; i++) {
         //ensure that we have the lowest price at all times
         minPrice = Math.min(prices[i], minPrice);
         // compare the profit we would currently make to what our maxProfit would be and save the higher value
         maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+    }
+    
+    return maxProfit;
+};
+
+//expanded for readability
+var maxProfit = function(prices) {
+    let minPrice = prices[0];
+    let maxProfit = 0;
+    
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i] < minPrice) {
+            minPrice = prices[i]
+        }
+
+        if (prices[i] - minPrice > maxProfit) {
+            maxProfit = prices[i] - minPrice
+        }
     }
     
     return maxProfit;
