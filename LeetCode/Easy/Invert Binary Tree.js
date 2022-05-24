@@ -16,12 +16,16 @@ var invertTree = function(root) {
 
 // depth first
 var invertTree = function(root) {
+    // DFS uses a stack because we are going DEPTH FIRST
+        // we add the children of a node into the stack, then we add the children of the children, taking care of one branch at a time
     const stack = [root]
 
     while(stack.length) {
+        // by using pop, we are looking at one of the deeper branches. the root is at the beginning of the stack
         let temp = stack.pop()
 
         if (temp !== null) {
+            // remember to switch lefts and rights
             [temp.left, temp.right] = [temp.right, temp.left];
             stack.push(temp.left, temp.right)
         }
