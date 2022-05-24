@@ -43,3 +43,30 @@ var isValid = function(s) {
     return true;
 };
 
+// switch solution
+var isValid = function(s) {
+    const stack = [];
+    
+    for (let i = 0 ; i < s.length ; i++) {
+        let c = s.charAt(i);
+
+        // this allows us to handle the different cases of open parentheses and closing parentheses rather than nested if checks
+            // also eliminates the need for a key object
+            // slightly more typing but more clarity and readability
+        switch(c) {
+            case '(': stack.push(')');
+                break;
+            case '[': stack.push(']');
+                break;
+            case '{': stack.push('}');
+                break;
+            default:
+                if (c !== stack.pop()) {
+                    return false;
+                }
+        }
+    }
+    
+    // combines the empty stack check with the final return statement
+    return stack.length === 0;
+};
