@@ -14,3 +14,18 @@ var invertTree = function(root) {
     return root;
 };
 
+// depth first
+var invertTree = function(root) {
+    const stack = [root]
+
+    while(stack.length) {
+        let temp = stack.pop()
+
+        if (temp !== null) {
+            [temp.left, temp.right] = [temp.right, temp.left];
+            stack.push(temp.left, temp.right)
+        }
+    }
+
+    return root;
+};
