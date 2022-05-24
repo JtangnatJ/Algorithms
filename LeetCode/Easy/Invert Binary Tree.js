@@ -55,3 +55,8 @@ var invertTree = function(root) {
 
     return root;
 };
+
+// anecdote courtesy of izadi-abraham on LeetCode
+    // one little thing that could be done to truly optimize time would be to add additional criteria to our if check in DFS and BFS
+        // (temp !== null && (temp.left || temp.right)) would allow us to not add null nodes needlessly into our stacks/queues
+// solutions provided by Hongbo-Miao on LeetCode
