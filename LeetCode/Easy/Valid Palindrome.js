@@ -18,6 +18,8 @@ var isPalindrome = function(s) {
 var isPalindrome = function(s) {
     const strippedString = s.toLowerCase().replace(/\W|_/g, '');
 
+    // we iterate from both ends of the string and compare the characters until we cross at the middle
+        // this is the same as a regular for loop, we just have an additional variable that is being utilized within the loop
     for (let i = 0, j = s.length -1; i <= j; i++, j--) {
         if (strippedString.charAt(i) !== strippedString.charAt(j)) {
             return false;
