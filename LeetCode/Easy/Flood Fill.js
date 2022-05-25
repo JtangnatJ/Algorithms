@@ -32,3 +32,33 @@ var floodFill = function(image, sr, sc, newColor) {
     // return the modified image 
     return image;
 };
+
+// modified
+var floodFill = function(image, sr, sc, newColor) {
+    var oldColor = image[sr][sc];
+    
+    if(oldColor === newColor) {
+        return image;
+    }
+    
+    var filler = function(image, row, col) {
+        // we abstract all of the if checks from the previous version to the top of the recursive helper
+            // this is our baseline check to exit the recusrion loop
+        if (row < 0 || col < 0 || row >= image.length || col >= image[0].length || image[row][col] !== oldColor) {
+            return;
+        }
+        // everything else is pretty much the same!
+        image[row][col] = newColor;
+        // the if checks are handled at the beginning of the recursion loop, makes this section of code look cleaner
+        filler(image, row - 1, col);
+        filler(image, row + 1, col);
+        filler(image, row, col - 1);
+        filler(image, row, col + 1); 
+        
+        return image;
+    }
+    
+    filler(image, sr, sc);
+    
+    return image;
+};
