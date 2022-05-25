@@ -7,6 +7,7 @@
 
 // Return the modified image after performing the flood fill.
 
+// DFS recursion
 var floodFill = function(image, sr, sc, newColor) {
     // save the original color to a variable for comparison
     let color = image[sr][sc];
@@ -60,5 +61,29 @@ var floodFill = function(image, sr, sc, newColor) {
     
     filler(image, sr, sc);
     
+    return image;
+};
+
+// BFS approach thanks to control_the_narrative on LeetCode
+var floodFill = function(image, sr, sc, newColor) {
+    // same checks as earlier to see if the starting square is fillable
+    const currColor = image[sr][sc];
+    if(currColor === newColor) return image;
+    //BFS uses a queue!
+    const queue = [[sr, sc]];
+    
+    // pretty much the same as our initial DFS solution, using a while loop instead of a recursive helper function
+    while(queue.length) {
+        const [row, col] = queue.shift();
+        if(image[row][col] === currColor) {
+            image[row][col] = newColor
+            // due to this being a BFS queue and a while loop, we cannot abstract these checks to the beginning
+                // the only time we want to break is if we have found all eligible squares
+			if(row-1 >= 0) queue.push([row-1, col]);  //up
+            if(row+1 < image.length) queue.push([row+1, col]);  //down
+            if(col+1 < image[0].length) queue.push([row, col+1]);  //right
+            if(col-1 >= 0) queue.push([row, col-1]);  //left
+        }
+    }
     return image;
 };
