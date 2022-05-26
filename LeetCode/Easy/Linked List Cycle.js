@@ -27,3 +27,32 @@ var hasCycle = function(head) {
     // if the while loop ever ends, it will be because fast saw a null node: meaning the linked list has no loop
     return false;
 };
+
+// the beginning is the same as Linked List Cycle
+    // we still have to check if there is a loop, however, now we have more to do after confirming a loop
+    var detectCycle = function(head) {
+        let slow = head;
+        let fast = head;
+    
+        while(fast && fast.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+            // if there is a loop
+            if (slow === fast) {
+                // reset the slow pointer to the head
+                slow = head;
+                // increment each tracker one by one until they meet
+                while (slow !== fast) {
+                    slow = slow.next
+                    fast = fast.next
+                }
+                // once they meet, break out of the while loop and return the node as asked
+                return slow;
+            }
+        }
+        // return null when there is no loop
+        return null;
+    };
+    
+    // https://leetcode.com/problems/linked-list-cycle-ii/discuss/495311/JavaScript-Two-Pointers-w-Extended-Notes
+    // bramphft does an excellent job of explaining the math behind why this method works and uses diagrams to visualize the steps we took
